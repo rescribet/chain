@@ -1,0 +1,12 @@
+# Semantic 'Hello World' application
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix os: <http://example.com/ns/os#> .
+
+os:a
+  rdf:type os:ActivationState;		# _:a is an activation state of the HelloWorld app
+  os:ptM true;				# _:a contains a push to make activator which starts true, thus enabled on start.
+  os:activates os:b.			# _:a activates the object _:b
+
+os:b
+  rdf:type os:SideEffect;		# _:b is a resource that causes a side-effect.
+  os:log "Hello World!".		# _:b calls the <os:log> method with the "Hello World!" literal as its argument
