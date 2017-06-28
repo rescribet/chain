@@ -1,18 +1,29 @@
 # Counts to ten outputting the result
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix os: <http://example.com/ns/os#> .
+@prefix os: <http://purl.org/chain/os#> .
+# Use temp until blank nodes are fixed
 @prefix temp: <http://example.com/ns/temp#> .
 
 temp:var1 os:value 0.
 
 # Note: the 'function call' will probaby be extracted into its own resource.
-os:a
+temp:a
   rdf:type os:ActivationState;		# :a is an activation state
   os:comparison os:lt;			# :a does evaluates a comparison of the type less than
   os:args (temp:var1 10);		# The arguments to the less than function will be the variable temp:var1 and literal 10
-  os:activates os:b.			# :a activates transition :b
+  os:activates temp:b.			# :a activates transition :b
 
-os:b
+temp:c					# Can you guess?
+  rdf:type os:ActivationState;
+  os:comparison os:eq;
+  os:args (temp:var1 9);
+  os:activates temp:d.
+
+temp:b
   rdf:type os:SideEffect;		# :b is a resource that causes a side-effect.
   os:inc temp:var1;			# :b increments temp:var1 by 1
   os:log temp:var1.			# :b calls the <os:log> method with the contents of temp:var1 as its argument
+
+temp:d
+  rdf:type os:SideEffect;
+  os:log "Done counting.".
