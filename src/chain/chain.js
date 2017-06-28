@@ -4,6 +4,12 @@ import ActivationProcessor from './ActivationProcessor.js';
 import TranslationProcessor from './TranslationProcessor.js';
 
 /**
+ * @typedef {Object} Transaction
+ * @property {Array<$rdf.Node>} add Triples to be added
+ * @property {Array<$rdf.Node>} del Triples to be removed.
+ */
+
+/**
  * Chain engine main loop.
  * @param store
  * @constructor

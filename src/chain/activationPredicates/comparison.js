@@ -1,14 +1,21 @@
 import { tripleToArgs } from '../helpers.js';
-import { OS, XMLS } from '../namespaces.js';
+import { OS } from '../namespaces.js';
 
 export const functions = {
+    [OS('eq')]: (a, b) => a === b,
     [OS('gt')]: (a, b) => a > b,
     [OS('gte')]: (a, b) => a >= b,
     [OS('lt')]: (a, b) => a < b,
     [OS('lte')]: (a, b) => a <= b,
+    [OS('ne')]: (a, b) => a !== b,
 };
 
-export default function ptM(triple, store) {
+/**
+ * Implements basic comparison operators by deferring them to their javascript
+ *   counterparts.
+ * @returns {Boolean} Whether the state is true
+ */
+export default function comparison(triple, store) {
     if (typeof functions[triple.object] === 'function') {
         const args = store.any(triple.subject, OS('args'));
         if(typeof args === 'undefined') {

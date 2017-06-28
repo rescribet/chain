@@ -12,9 +12,9 @@ export default class ActivationProcessor {
     }
 
     /**
-     * Determines which tranlation states evaluate true based on the activation
+     * Determines which translation states evaluate true based on the activation
      *   states.
-     * @returns {Array} IRI's of all the activated Tranlations
+     * @returns {Array} IRI's of all the activated translations
      */
     calculateActive() {
         const activationIds = this.store.match(

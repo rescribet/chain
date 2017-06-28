@@ -22,7 +22,7 @@ The core will terminate once no activation states evaluate true.
 1. `$ npm install`
 1. `$ npm run install`
 1. `$ python ./server.py`
-1. Browse to `http://localhost:8000`
+1. Browse to `http://localhost:8000/src`
 1. Open the console to see the application output.
 1. Edit the `application` variable in `src/index.js` to load different
    applications.
