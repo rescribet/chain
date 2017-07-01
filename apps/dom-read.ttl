@@ -1,0 +1,27 @@
+# Reads from DOM
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+
+@prefix os: <http://purl.org/chain/os#> .
+# Use temp until blank nodes are fixed
+@prefix temp: <http://example.com/ns/temp#> .
+
+temp:domAppState os:value true .
+temp:domValue os:value 0 .
+
+temp:domSelector
+  a oa:ResourceSelection ;
+  oa:hasSource <http://localhost:8000/src/> ;
+  oa:hasSelector [
+    a oa:CssSelector ;
+    rdf:value "#console-msg"
+  ] .
+
+temp:a1
+  rdf:type os:ActivationState ;
+  os:ptM temp:domAppState ;
+  os:activates temp:t1 .
+
+temp:t1
+  rdf:type os:SideEffect ;
+  os:log temp:domSelector .

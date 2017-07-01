@@ -1,7 +1,7 @@
 import findEvaluator from './activationPredicates/index.js';
 import { OS, RDF } from './namespaces.js';
 
-const ACTIVATION_PREDICATES = [OS('ptM'), OS('comparison')];
+const ACTIVATION_PREDICATES = [OS('ptM'), OS('comparison'), OS('onChange')];
 
 export default class ActivationProcessor {
     constructor(store) {

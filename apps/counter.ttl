@@ -4,7 +4,7 @@
 # Use temp until blank nodes are fixed
 @prefix temp: <http://example.com/ns/temp#> .
 
-temp:var1 os:value 0.
+temp:var1 rdf:value 0.
 
 # Note: the 'function call' will probaby be extracted into its own resource.
 temp:a

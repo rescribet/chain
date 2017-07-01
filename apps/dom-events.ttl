@@ -1,0 +1,35 @@
+# Acts on events from the DOM
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+
+@prefix os: <http://purl.org/chain/os#> .
+# Use temp until blank nodes are fixed
+@prefix temp: <http://example.com/ns/temp#> .
+
+temp:domInputSelector
+  a oa:ResourceSelection ;
+  oa:hasSource <http://localhost:8000/src/> ;
+  oa:hasSelector [
+    a oa:CssSelector ;
+    rdf:value "#user-input"
+  ] .
+
+temp:init os:onChange temp:domInputSelector . # Listen to changes for our input
+
+# The obvious way to implement event listening is to just set listeners on all
+#   passed selectors. Using 'managed inputs' would also be a valid option if
+#   the consistency of the state is of utter importance.
+#temp:a1
+#  a os:ActivationState ;
+#  os:onChange temp:domInputSelector ;
+#  os:activates temp:t1 .
+
+temp:a2
+  a os:ActivationState;
+  os:comparison os:eq;
+  os:args (temp:domInputSelector "Show message");
+  os:activates temp:t1.
+
+temp:t1
+  a os:SideEffect ;
+  os:log "Final state reached" .
