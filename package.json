@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "description": "Proof-of-concept declarative 'programming language' in RDF.",
   "main": "src/index.js",
+  "engines": {
+    "node": ">= 12.0.0"
+  },
+  "type": "module",
   "dependencies": {
     "jsonld": "^0.4.12",
+    "koa": "^2.7.0",
+    "koa-static": "^5.0.0",
     "n3": "^0.10.0",
-    "rdflib": "^0.15.0"
+    "rdflib": "^0.20.1"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "cd node_modules/n3/browser && npm install && node build-browser-versions && cd ../../.."
+    "start": "node --experimental-modules ./server.js"
   },
   "repository": {
     "type": "git",

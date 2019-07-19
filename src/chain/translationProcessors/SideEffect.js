@@ -23,6 +23,7 @@ export default function SideEffect(translation, store) {
             }
         }
     });
+
     return {
         add: tripsAdd,
         del: tripsDel
